@@ -4,19 +4,23 @@ from sklearn.externals import joblib
 
 from {{cookiecutter.repo_name}}.pipeline import predict_k
 
-model = joblib.load("./model.pkl")
-
 app = Flask(__name__)
+
 api = Api(app, version='1.0', title='{{cookiecutter.project_name}}',
           description='{{cookiecutter.project_short_description}}')
 ns = api.namespace('{{cookiecutter.repo_name}}', description='{{cookiecutter.project_short_description}}')
+
+health = HealthCheck(app, "/healthcheck")
+envdump = EnvironmentDump(app, "/environment")
+
+model = joblib.load("./model.pkl")
 
 
 @ns.route('/predict')
 class Predictor(Resource):
     def post(self):
         data = request.json
-        #TODO Implement
+        # TODO Implement
         raise NotImplementedError
 
 
