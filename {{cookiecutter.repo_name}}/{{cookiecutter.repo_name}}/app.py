@@ -1,8 +1,7 @@
 from flask import Flask, request
 from flask_restplus import Api, Resource, fields
+from healthcheck import HealthCheck, EnvironmentDump
 from sklearn.externals import joblib
-
-from {{cookiecutter.repo_name}}.pipeline import predict_k
 
 app = Flask(__name__)
 

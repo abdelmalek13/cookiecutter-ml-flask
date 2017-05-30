@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(mes
 
 
 def train(training_data, model_path, test_data=None):
-    X_train, y_train = read_train_data(training_data, freq_treshold=treshold)
+    X_train, y_train = read_train_data(training_data)
 
     logging.info("Training on {} examples for {} labels".format(len(X_train), len(set(y_train))))
     logging.info("Starting the training")
