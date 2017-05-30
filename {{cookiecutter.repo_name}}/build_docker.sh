@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION=0.1.0
+VERSION=$(sed -nE 's/ *__version__ *= *"([^"]+)".*/\1/p' ./{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}/__init__.py)
 
 REGISTRY="{{cookiecutter.registry_name}}"
 REPO="{{cookiecutter.repo_name}}"
