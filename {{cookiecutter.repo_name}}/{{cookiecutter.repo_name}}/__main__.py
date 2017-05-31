@@ -3,14 +3,14 @@ import logging
 import plac
 from sklearn.externals import joblib
 
-from {{cookiecutter.repo_name}}.data import read_train_data, read_test_data
+from {{cookiecutter.repo_name}}.data import read_train_data, read_test_data, DEFAULT_DATA_PATH
 from {{cookiecutter.repo_name}}.metrics import benchmark
 from {{cookiecutter.repo_name}}.pipeline import preprocess_pipeline, prediction_pipeline
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
 
 
-def train(training_data, model_path, test_data=None):
+def train(training_data, model_path=DEFAULT_DATA_PATH, test_data=None):
     X_train, y_train = read_train_data(training_data)
 
     logging.info("Training on {} examples for {} labels".format(len(X_train), len(set(y_train))))
@@ -23,7 +23,7 @@ def train(training_data, model_path, test_data=None):
         X_test = preprocess_pipeline.transform(X_test)
         benchmark(prediction_pipeline, X_train, y_train, X_test, y_test, verbose=2)
 
-    logging.info("Storing the model")
+    logging.info("Storing the model to {}".format(model_path))
     joblib.dump(prediction_pipeline, model_path)
 
 

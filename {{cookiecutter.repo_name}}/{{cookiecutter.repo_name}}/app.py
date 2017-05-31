@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_restplus import Api, Resource, fields
 from healthcheck import HealthCheck, EnvironmentDump
 from sklearn.externals import joblib
+from {{cookiecutter.repo_name}}.data import DEFAULT_DATA_PATH
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ ns = api.namespace('{{cookiecutter.repo_name}}', description='{{cookiecutter.pro
 health = HealthCheck(app, "/healthcheck")
 envdump = EnvironmentDump(app, "/environment")
 
-model = joblib.load("./model.pkl")
+model = joblib.load(DEFAULT_DATA_PATH)
 
 
 @ns.route('/predict')

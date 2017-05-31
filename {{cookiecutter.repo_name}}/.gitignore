@@ -139,4 +139,4 @@ ENV/
 # Rope project settings
 .ropeproject
 data/
-
+models/*
