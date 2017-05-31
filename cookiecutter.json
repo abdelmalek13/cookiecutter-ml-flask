@@ -5,5 +5,6 @@
     "repo_name": "empty_project",
     "registry_name": "no_registry",
     "project_short_description": "This is an empty project.",
+    "url": "",
     "version": "0.1.0"
 }

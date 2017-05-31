@@ -7,15 +7,16 @@ install:
 	python setup.py install
 
 train:
-	python -m dialogact $(train_data)
+	python -m {{cookiecutter.repo_name}} $(train_data)
 
 serve:
-	python -m dialogact.app
+	python -m {{cookiecutter.repo_name}}.app
 
 build:
-	docker build -t $REGISTRY/$REPO:latest .
-	docker tag $REGISTRY/$REPO:latest $REGISTRY/$REPO:$VERSION
+	docker build -t $(REGISTRY)/$(REPO):latest .
+	docker tag $(REGISTRY)/$(REPO):latest $(REGISTRY)/$(REPO):$(VERSION)
 
 push:
-	docker push $REGISTRY/$REPO:latest
-	docker push $REGISTRY/$REPO:$VERSION
+	docker push $(REGISTRY)/$(REPO):latest
+	docker push $(REGISTRY)/$(REPO):$(VERSION)
+
