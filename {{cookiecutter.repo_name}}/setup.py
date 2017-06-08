@@ -15,7 +15,7 @@ test_requirements = [
 ]
 
 setup(
-    name='hunlp',
+    name='{{cookiecutter.repo_name}}',
     version='0.1.0',
     description="{{cookiecutter.project_short_description}}",
     long_description=readme,
