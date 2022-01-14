@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-conda create -n {{cookiecutter.repo_name}}
+virtualenv .venv -p python3
+source .venv/bin/activate
 exit 0
